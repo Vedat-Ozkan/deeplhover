@@ -69,7 +69,6 @@ async function doTranslate(request, sendResponse) {
     data: detectLang,
     success: function (res) {
       wordLang = res.ld_result.srclangs[0].substr(0, 2).toUpperCase()
-      console.log(process.env.API_KEY);
       if (wordLang === translatorData.source_lang || translatorData.source_lang === "") {
         $.ajax({
           type: "POST",
