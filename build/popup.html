@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>DeepLHover</title>
+  <!-- vuetify and its font will be loaded(it comes from popup.js css import) -->
+  <link rel="stylesheet" href="dist/main.css" />
+
+  <style type="text/css">
+    body {
+      min-width: 350px;
+      height: 200px;
+      margin: 0;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <v-app v-cloak color="#7A93AC">
+      <v-card dark flat>
+        <v-toolbar color="#102b46" elevation="1">
+          <v-toolbar-title>DeepL Hover</v-toolbar-title>
+        </v-toolbar>
+        <v-list flat id="settingListBox" color="#617073">
+          <v-list-item  v-for="(value, name) in settingList" :key="name">
+            <v-select color="#7A93AC" v-model="selectedList[name]" :items="Object.keys(value.optionList)" :label="value.description"
+              @change="onSelectChange($event,name)"></v-select>
+          </v-list-item>
+        </v-list>
+      </v-card>
+    </v-app>
+  </div>
+
+  <script src="dist/newp.js"></script>
+</body>
+
+</html>
