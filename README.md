@@ -3,6 +3,7 @@
 Deepl Hover is a chrome extension that uses DeepL to translate the text a user hovers over. 
 
 I will put the extension store link once it passes through inspection
+Update 9/19/21: Here is the link! https://chrome.google.com/webstore/detail/deepl-hover/pjebemlaembdkbgoldjpjdckbmggoclf?hl=en&authuser=0
 
 # Pre-Development
 ## Idea
