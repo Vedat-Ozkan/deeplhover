@@ -1,7 +1,5 @@
 'use strict';
 
-// Some of the code from https://github.com/ttop32/MouseTooltipTranslator
-
 
 import $ from "jquery";
 import 'bootstrap/js/dist/tooltip';
@@ -68,6 +66,7 @@ setInterval(async function() {
     var word = getMouseOverWord(clientX, clientY); //get mouse positioned text
     word = filterWord(word); //filter out one that is url,over 1000length,no normal char
     if (word.length != 0 && activatedWord != word) { 
+      console.log(word);
       var response = await translateSentence(word, currentSetting["translateTarget"]);
       activatedWord = word;
 

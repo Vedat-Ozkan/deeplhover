@@ -50,9 +50,9 @@ module.exports = {
     }),
     new Dotenv()
   ],
-  entry: './background.js',
+  entry: './content.js',
   output: {
-    filename: 'newb.js',
+    filename: 'newc.js',
     path: path.resolve(__dirname, 'build/dist'),
   }
 };

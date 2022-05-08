@@ -1,26 +1,31 @@
 {
   "name": "DeepL Hover",
   "description": "Tooltip translator for DeepL",
-  "version": "0.0.1",
-  "manifest_version": 2,
-  "permissions": ["storage", "<all_urls>"],
-  "content_security_policy": "script-src 'self' 'unsafe-eval';  object-src 'none'",
+  "version": "0.0.2",
+  "manifest_version": 3,
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self';  object-src 'none'"
+  },
   "icons": {
     "16": "images/icon_16.png",
     "48": "images/icon_48.png",
     "128": "images/icon_128.png"
   },
-  "content_scripts": [{
-    "js": ["dist/newc.js"],
-    "css": ["bootstrapcustom.min.css"],
-    "matches": ["<all_urls>"],
-    "run_at": "document_idle",
-    "all_frames": true
-  }],
+  "content_scripts": [
+    {
+      "js": ["dist/newc.js"],
+      "css": ["bootstrapcustom.min.css"],
+      "matches": ["<all_urls>"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
   "background": {
-    "scripts": ["dist/newb.js"]
+    "service_worker": "dist/newb.js"
   },
-  "browser_action": {
+  "action": {
     "default_title": "DeepLHover",
     "default_popup": "popup.html"
   },

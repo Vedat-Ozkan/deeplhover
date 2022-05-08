@@ -2,7 +2,6 @@
 
 //interact user setting,
 //save and load setting from background.js
-// Some of the code from https://github.com/ttop32/MouseTooltipTranslator
 
 import "typeface-roboto/index.css"; //font for vuetify
 import 'vuetify/dist/vuetify.min.css'; //vuetify css
@@ -117,7 +116,7 @@ new Vue({
       this.selectedList = result;
     },
     onSelectChange(event, name) {
-      this.currentSetting[name] = settingList[name]["optionList"][event];
+      this.currentSetting[name] = settingList[name]["optionList"][event]; v
       this.changeSetting();
     },
     changeSetting() {
