@@ -69,6 +69,7 @@ setInterval(async function() {
       console.log(word);
       var response = await translateSentence(word, currentSetting["translateTarget"]);
       activatedWord = word;
+      console.log(response);
 
       if (!response || response.translatedText == "") {
         hideTooltip();

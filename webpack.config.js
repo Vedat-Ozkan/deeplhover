@@ -1,27 +1,34 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Dotenv = require('dotenv-webpack')
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+  devtool: "source-map",
+  stats: {
+    all: false,
+    errors: true,
+    builtAt: true,
+  },
   module: {
     rules: [
       {
         test: /\.s(c|a)ss$/,
         use: [
-          'vue-style-loader',
-          'css-loader',
+          "vue-style-loader",
+          "css-loader",
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             // Requires sass-loader@^7.0.0
             options: {
-              implementation: require('sass'),
-              indentedSyntax: true // optional
+              implementation: require("sass"),
+              indentedSyntax: true, // optional
             },
             // Requires sass-loader@^8.0.0
             options: {
-              implementation: require('sass'),
+              implementation: require("sass"),
               sassOptions: {
-                indentedSyntax: true // optional
+                indentedSyntax: true, // optional
               },
             },
           },
@@ -29,30 +36,42 @@ module.exports = {
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        use: 'url-loader?limit=25000'
+        use: "url-loader?limit=25000",
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader'],
+        use: ["vue-style-loader", MiniCssExtractPlugin.loader, "css-loader"],
       },
-    ]
-  }, 
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+        options: {
+          loaders: {},
+          // other vue-loader options go here
+        },
+      },
+    ],
+  },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
+      vue$: "vue/dist/vue.esm.js",
+    },
   },
   plugins: [
     // Extract CSS into separate files
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: "[name].css",
     }),
+    new VueLoaderPlugin(),
     new Dotenv()
   ],
-  entry: './content.js',
+  entry: {
+    popup: "./popup.js",
+    background: "./background.js",
+    content: "./content.js",
+  },
   output: {
-    filename: 'newc.js',
-    path: path.resolve(__dirname, 'build/dist'),
-  }
+    filename: "[name].js",
+    path: path.resolve(__dirname, "build"),
+  },
 };
