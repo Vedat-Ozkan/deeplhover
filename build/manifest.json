@@ -1,7 +1,7 @@
 {
   "name": "DeepL Hover",
   "description": "Tooltip translator for DeepL",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 3,
   "permissions": ["storage"],
   "host_permissions": ["<all_urls>"],
@@ -9,13 +9,13 @@
     "extension_pages": "script-src 'self';  object-src 'none'"
   },
   "icons": {
-    "16": "images/icon_16.png",
-    "48": "images/icon_48.png",
-    "128": "images/icon_128.png"
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
   },
   "content_scripts": [
     {
-      "js": ["dist/newc.js"],
+      "js": ["content.js"],
       "css": ["bootstrapcustom.min.css"],
       "matches": ["<all_urls>"],
       "run_at": "document_idle",
@@ -23,7 +23,7 @@
     }
   ],
   "background": {
-    "service_worker": "dist/newb.js"
+    "service_worker": "background.js"
   },
   "action": {
     "default_title": "DeepLHover",
